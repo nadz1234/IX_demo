@@ -1,6 +1,8 @@
+import 'dart:io';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:universal_platform/universal_platform.dart';
 
 import 'dart:async';
 
@@ -49,28 +51,36 @@ class _SearchPageState extends State<SearchPage> {
         });
   }
 
+  bool isIos = UniversalPlatform.isIOS;
+  bool isWeb = UniversalPlatform.isWeb;
+
   @override
   void initState() {
     super.initState();
-    connection();
 
-    var androidInitialize = AndroidInitializationSettings('ic_launcher');
-    var ioSInitialize = IOSInitializationSettings();
-    var initSetttings =
-        InitializationSettings(androidInitialize, ioSInitialize);
+    if (!isWeb) {
+      connection();
 
-    flutterLocalNotificationsPlugin = new FlutterLocalNotificationsPlugin();
-    flutterLocalNotificationsPlugin.initialize(initSetttings);
+      var androidInitialize = AndroidInitializationSettings('ic_launcher');
+      var ioSInitialize = IOSInitializationSettings();
+      var initSetttings =
+          InitializationSettings(androidInitialize, ioSInitialize);
+
+      flutterLocalNotificationsPlugin = new FlutterLocalNotificationsPlugin();
+      flutterLocalNotificationsPlugin.initialize(initSetttings);
+    }
   }
 
   Future showNotification() async {
-    var android = AndroidNotificationDetails(
-        'id', 'IX Notification ', 'Searching for something using the API',
-        importance: Importance.High);
-    var iOS = IOSNotificationDetails();
-    var generalNotDetails = new NotificationDetails(android, iOS);
-    await flutterLocalNotificationsPlugin.show(0, 'IX notification',
-        'you have searched for $search .. ', generalNotDetails);
+    if (!isWeb) {
+      var android = AndroidNotificationDetails(
+          'id', 'IX Notification ', 'Searching for something using the API',
+          importance: Importance.High);
+      var iOS = IOSNotificationDetails();
+      var generalNotDetails = new NotificationDetails(android, iOS);
+      await flutterLocalNotificationsPlugin.show(0, 'IX notification',
+          'you have searched for $search .. ', generalNotDetails);
+    }
   }
 
   String search = '';

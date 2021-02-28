@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:ix_app_demo/database/firebase_service.dart';
 import 'package:ix_app_demo/models/imageModel.dart';
 import 'package:ix_app_demo/pages/add_image.dart';
+import 'dart:io';
+import 'package:universal_platform/universal_platform.dart';
 
 class IXPage extends StatefulWidget {
   @override

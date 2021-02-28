@@ -4,6 +4,8 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:path_provider/path_provider.dart';
 import 'package:http/http.dart' as http;
+import 'dart:io';
+import 'package:universal_platform/universal_platform.dart';
 
 class HomePage extends StatefulWidget {
   String search;

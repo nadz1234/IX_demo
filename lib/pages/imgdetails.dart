@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ix_app_demo/database/firebase_service.dart';
+import 'dart:io';
+import 'package:universal_platform/universal_platform.dart';
 
 class ImageDetails extends StatefulWidget {
   var tags;

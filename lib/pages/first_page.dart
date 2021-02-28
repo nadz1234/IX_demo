@@ -2,6 +2,8 @@ import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:ix_app_demo/pages/home.dart';
 import 'package:ix_app_demo/pages/ix_databasePage.dart';
+import 'dart:io';
+import 'package:universal_platform/universal_platform.dart';
 
 class FirstPage extends StatefulWidget {
   String search;

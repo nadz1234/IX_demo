@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:ix_app_demo/pages/searchPage.dart';
+import 'package:universal_platform/universal_platform.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
